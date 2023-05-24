@@ -22,6 +22,7 @@ Scenario('Liking one restaurant and cancel liked the restaurant. ', async ({ I }
   I.seeElement('.restaurant-item');
   const likedRestaurantTitle = await I.grabTextFrom('.restaurant-item__content__name a');
   I.click(likedRestaurantTitle);
+
   // Unlike the restaurant
   I.seeElement('.like');
   I.click('.like');

@@ -18,7 +18,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <img class="lazyload" data-src="${ENDPOINT.LARGE_IMAGE + restaurant.pictureId}" alt="${restaurant.name}">
   </div>
   <div class="restaurant__description">
-    <h2>Deskripsi</h2>
+    <h2>Description</h2>
     <p>${restaurant.description}</p>
   </div>
   <div class="restaurant__menus">
@@ -39,16 +39,12 @@ const createRestaurantDetailTemplate = (restaurant) => `
     </div>
   </div>
   <div class="restaurant__reviews">
-    <h2>Customer Rivewer</h2>
+    <h2>Customer Reviewer</h2>
     <div id="restaurant__reviews__content">
       ${generateReview(restaurant.customerReviews)}
     </div>
     <button id="addButton" class="restaurant__reviews__button">Add Review</button>
     <div class="addForm"></div>
-    <dialog id="myDialog">
-      <button id="closeDialog">X</button>
-      This is a dialog window
-    </dialog>
   </div>
 `;
 

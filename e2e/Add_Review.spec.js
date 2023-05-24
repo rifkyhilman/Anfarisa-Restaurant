@@ -9,6 +9,8 @@ Before(({ I }) => {
 const assert = require('assert');
 
 Scenario('Add review the restaurant. ', async ({ I }) => {
+  pause();
+
   I.seeElement('.restaurant-item__content__name a');
 
   const firstRestaurant = locate('.restaurant-item__content__name a').first();
@@ -18,16 +20,13 @@ Scenario('Add review the restaurant. ', async ({ I }) => {
   I.seeElement('.restaurant__reviews__button');
   I.click('.restaurant__reviews__button');
 
-  I.amOnPage('/#/favorite');
-  I.seeElement('.restaurant-item');
-  const likedRestaurantTitle = await I.grabTextFrom('.restaurant-item__content__name a');
-  I.click(likedRestaurantTitle);
-  // Unlike the restaurant
-  I.seeElement('.like');
-  I.click('.like');
+  I.fillField('#fname', 'Guru Gembul');
+  const newRestaurantReview = await I.grabTextFrom('.restaurant__reviews__form__col-75');
+  I.pressKey('Enter');
+  I.fillField('#freview', 'Mantap Sekali Tempatnya');
+  I.click('.restaurant__reviews__form__button');
 
-  I.amOnPage('/#/favorite');
-  I.see('There is no favorite restaurant yet', '.restaurants__list__not-found');
+  I.seeElement('.restaurant__reviews__card h3', newRestaurantReview);
 
-  assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
+  assert.strictEqual(firstRestaurantTitl, newRestaurantReview);
 });
